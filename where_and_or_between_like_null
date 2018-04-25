@@ -1,0 +1,109 @@
+
+#Get the title and release year for all Spanish language films released before 2000.
+select title, release_year
+from films
+where release_year < 2000 and language = 'Spanish';
+
+#Get all details for Spanish language films released after 2000.
+select *
+from films
+where release_year > 2000 and language = 'Spanish';
+
+#Get all details for Spanish language films released after 2000, but before 2010.
+select *
+from films
+where release_year > 2000 and language = 'Spanish' and release_year < 2010;
+
+
+#Get the title and release year for films released in the 90s.
+select title,release_year
+from films
+where release_year < 2000 and release_year >= 1990
+
+#build on your query to filter the records to only include French or Spanish language films.
+select *
+from films
+where (release_year < 2000 and release_year >= 1990) 
+and (language = 'French' or language = 'Spanish')
+
+#Finally, restrict the query to only return films that took in more than $2M gross.
+select *
+from films
+where (release_year < 2000 and release_year >= 1990) 
+and (language = 'French' or language = 'Spanish')
+and (gross > 2000000);
+
+#Get the title and release year of all films released between 1990 and 2000 (inclusive).
+select title, release_year
+from films
+where release_year between 1990 and 2000 ;
+
+#select only films that have budgets over $100 million.
+select title, release_year
+from films
+where release_year between 1990 and 2000 
+and budget > 100000000;
+
+#Restrict the query to only return Spanish language films.
+select title, release_year
+from films
+where release_year between 1990 and 2000 
+and budget > 100000000 and language = 'Spanish';
+
+#Modify to your previous query to include all Spanish language or French language films with the same criteria as before.
+select title, release_year
+from films
+where release_year between 1990 and 2000 
+and budget > 100000000 
+and (language = 'Spanish' or language = 'French');
+
+#Get the title and release year of all films released in 1990 or released in 2000 that were longer than two hours. Remember, duration is in minutes!
+select title, release_year
+from films 
+where release_year IN (1990,2000)
+and duration > 120 ;
+
+#Get the title and language of all films which were in English, Spanish, or French.
+select title, language
+from films 
+where language IN ('English','Spanish','French');
+
+#Get the title and certification of all films with an NC-17 or R certification.
+select title, certification
+from films 
+where certification IN ('NC-17','R');
+
+#Get the names of people who are still alive, i.e. whose death date is missing.
+select name
+from people
+where deathdate is null;
+
+#Get the title of every film which doesn't have a budget associated with it.
+select title
+from films
+where budget is null;
+
+#Get the number of films which don't have a language associated with them.
+select count(*)
+from films
+where language is null;
+
+
+#Get the names of all people whose names begin with 'B'. The pattern you need is 'B%'.
+select name
+from people
+where name like 'B%';
+
+# Get the names of people whose names have 'r' as the second letter. The pattern you need is '_r%'.
+select name
+from people
+where name like '_r%';
+
+
+#Get the names of people whose names don't start with A. The pattern you need is 'A%'.
+select name
+from people
+where name not like 'A%';
+
+
+
